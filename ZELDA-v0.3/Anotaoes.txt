@@ -1,0 +1,36 @@
+Tela de Login
+	Usuário  e Senha :
+		Fonte : Segoi UI 
+		Tamanho : 21
+		Opacidade : 40%
+	Botão Login:
+		Fonte : Yu Gothic
+		Tamanho: 13
+		Opacidade: 100%
+
+Label dos Quadros Primários
+	Fonte: Segoi UI
+	Tamanho: 10
+	Opacidade : 100%
+
+Menu de Exclusão
+	Fonte: Segoi UI
+	Tamanho: 20
+
+Botões do Menu de Exclusão
+	Fonte: Yu Gothic
+	Tamanho:13
+
+Label Principal Cadastro/Remoção/Edição de Funcionários e Setores
+	Fonte: Segoi UI
+	Tamanho:30
+	Opacidade:100%
+Label Secundário Cadastro/Remoção/Edição de Funcionários e Setores
+	Fonte: Segoi UI
+	Tamanho: 15
+	Opacidade: 100%
+
+Botões das Telas de Cadastro/Remoção/Edição de Funcionários e Setores
+	Fonte:Yu Gothic
+	Tamanho: 18
+	Opacidade:100%
