@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<link rel="stylesheet" style="text/css " href="static/style.css">
+{% endblock %}
+
+{% block content %}
+	<div class="container" id="login-page-container">
+        <form>
+					<p style="font-family:Segoi; font-weight:bold; font-size:30; color:white">Cadastro de Funcionários</p>
+
+					<p style="font-family:Segoi; font-weight:bold; font-size:18; color:white">Nome do Funcionário</p>
+					<div class="form-group input-group" style="width:100%">
+    	      	<span class="input-group-addon">
+	              </span>
+	              <input class="form-control">
+						</div>
+						<p style="font-family:Segoi; font-weight:bold; font-size:18; color:white">Login do Funcionário</p>
+						<div class="form-group input-group" style="width:30%">
+							<span class="input-group-addon"></span>
+	            <input class="form-control">
+           	</div>
+						<p style="font-family:Segoi; font-weight:bold; font-size:18; color:white">Senha do Funcionário</p>
+						<div class="form-group input-group" style="width:30%">
+							<span class="input-group-addon"></span>
+							<input class="form-control">
+						</div>
+        </form>
+
+
+				<button class="round-button" style="margin-top: 5%" type="submit">CANCELAR</button>
+			</div>
+{% endblock %}
