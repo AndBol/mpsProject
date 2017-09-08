@@ -2,6 +2,10 @@ body {
     background-color: #22c595;
 }
 
+h1, p {
+    color: white;
+}
+
 html, body {
     /*Só pra ter certeza que o html e o body estão cobrindo toda a tela*/
     width: 100%;
