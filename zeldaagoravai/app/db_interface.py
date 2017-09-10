@@ -37,11 +37,22 @@ class Zelda:
           setores.append(setor)
         return setores
 
+    def get_setores_ativos(self):
+        data = self.execute_query("select * from setor where setor_situacao = 0")
+        setores = []
+        for d in data:
+          setor = Setor(
+            id=d["setor_id"],
+            nome=d["setor_nome"],
+            situacao=d["setor_situacao"])
+          setores.append(setor)
+        return setores
+
     def edita_setor(self, setor):
         self.execute_query("update setor set setor_nome = '{}' where setor_id = '{}'".format(setor.nome, setor.id), True)
 
-    def deleta_setor(self, setor):
-        self.execute_query("update setor set setor_situacao = 1 where setor_id = '{}'".format(setor.id), True)
+    def deleta_setor(self, setor_id):
+        self.execute_query("update setor set setor_situacao = 1 where setor_id = '{}'".format(setor_id), True)
 
     # CRUD - FUNCIONARIO
 
@@ -66,8 +77,8 @@ class Zelda:
     def edita_funcionario(self, funcionario):
         self.execute_query("update funcionario set funcionario_nome = '{}', funcionario_login = '{}', funcionario_senha = '{}', setor_id = '{}' where funcionario_id = '{}'".format(funcionario.nome, funcionario.login, funcionario.senha, funcionario.setor_id, funcionario.id), True)
 
-    def deleta_funcionario(self, funcionario):
-        self.execute_query("update funcionario set funcionario_situacao = 1 where funcionario_id = '{}'".format(funcionario.id), True)
+    def deleta_funcionario(self, funcionario_id):
+        self.execute_query("update funcionario set funcionario_situacao = 1 where funcionario_id = '{}'".format(funcionario_id), True)
 
     def get_funcionario(self, id):
         data = self.execute_query('''select funcionario_id, funcionario_nome, funcionario_login, funcionario_situacao, setor.setor_id, setor_nome, setor_situacao from funcionario, setor where funcionario_id = {} and funcionario.setor_id = setor.setor_id'''.format(id))

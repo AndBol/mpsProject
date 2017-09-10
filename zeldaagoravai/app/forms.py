@@ -37,3 +37,12 @@ class AtualizaFuncionarioForm(Form):
     funcionario_senha = PasswordField('Senha', validators=[DataRequired('Senha é obrigatório')])
     funcionario_setor_id = SelectField ('Setor', coerce=int)
     funcionario_id = HiddenField('ID Funcionário', validators=[DataRequired('O ID do Funcionário não pode ser indefinido')])
+
+
+# Remover Funcionário
+class RemoveFuncionarioForm(Form):
+    funcionario_id = HiddenField('ID Funcionário', validators=[DataRequired('O ID do Funcionário não pode ser indefinido')])
+
+# Remover Setor
+class RemoveSetorForm(Form):
+    setor_id = HiddenField('ID Setor', validators=[DataRequired('O ID do Setor não pode ser indefinido')])

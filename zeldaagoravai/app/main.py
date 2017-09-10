@@ -4,7 +4,7 @@ from passlib.hash import sha256_crypt
 from functools import wraps
 from .forms import *
 from .classes import Criptografador
-from flask.ext.login import login_user, logout_user
+from flask_login import login_user, logout_user
 from flask_mysqldb import MySQL
 from .db_interface import Zelda
 from .funcionario import Funcionario
@@ -76,7 +76,7 @@ def funcionario_criar():
     form = CadastraFuncionarioForm()
 
     # Recupera todos os setores do banco
-    setores = db.get_setores()
+    setores = db.get_setores_ativos()
 
     # Adiciona dinamicamente as opções do SelectField que vai ser renderizado pelo wtforms
     form.funcionario_setor_id.choices = [(s.id, s.nome) for s in setores]
@@ -152,6 +152,31 @@ def preenche_dados_atuais(form, func):
     form.funcionario_senha.data = func.senha
 
 
+@app.route('/funcionario-remover', methods=['GET', 'POST'])
+def remover_funcionario():
+    form = RemoveFuncionarioForm()
+
+    funcionario = Funcionario()
+
+    if form.validate_on_submit():
+        db.deleta_funcionario(form.funcionario_id.data)
+        return redirect(url_for('admin'))
+    else:
+
+        func_id = request.args['id']
+
+        funcionario = db.get_funcionario(func_id)
+
+        if funcionario is None:
+            return redirect(url_for('admin'))
+        else:
+            form.funcionario_id.data = funcionario.id
+
+        flash_errors(form)
+
+    return render_template('remover_funcionario.html', form=form, func=funcionario)
+
+
 @app.route('/setor-criar', methods=['GET','POST'])
 def setor_criar():
     form = CadastraSetorForm()
@@ -196,6 +221,30 @@ def setor_atualizar():
 
     return render_template('setor_atualizar.html', form=form)
 
+
+@app.route('/setor-remover', methods=['GET', 'POST'])
+def remover_setor():
+    form = RemoveSetorForm()
+
+    setor = Setor()
+
+    if form.validate_on_submit():
+        db.deleta_setor(form.setor_id.data)
+        return redirect(url_for('admin'))
+    else:
+
+        setor_id = request.args['id']
+
+        setor = db.get_setor(setor_id)
+
+        if setor is None:
+            return redirect(url_for('admin'))
+        else:
+            form.setor_id.data = setor.id
+
+        flash_errors(form)
+
+    return render_template('remover_setor.html', form=form, setor=setor)
 
 def flash_errors(form):
     for field, errors in form.errors.items():

@@ -24,6 +24,7 @@
                                 <th>Nome do Funcionário</th>
                                 <th>ID do Setor</th>
                                 <th>Nome do Setor</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -35,6 +36,7 @@
                                 <td>{{funcionario.nome}}</td>
                                 <td>{{funcionario.setor_id}}</td>
                                 <td>{{funcionario.setor_nome}}</td>
+                                <td>{{funcionario.situacao}}</td>
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -46,8 +48,8 @@
                         <a href="funcionario-criar"><button class="round-button">Cadastrar Funcionário</button></a>
                     </div>
                     <div class="col-xs-12 col-sm-4">
-                        <form method="get" action="funcionario-atualizar">
-                            <button type="submit" disabled class="round-button" name="id">Remover Funcionário</button>
+                        <form method="get" action="funcionario-remover">
+                            <button type="submit" data-toggle="modal" data-target="remover-funcionario-modal" disabled class="round-button" name="id">Remover Funcionário</button>
                         </form>
                     </div>
                     <div class="col-xs-12 col-sm-4">
@@ -70,6 +72,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Nome do Setor</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -79,6 +82,7 @@
                             <tr>
                                 <td>{{setor.id}}</td>
                                 <td>{{setor.nome}}</td>
+                                <td>{{setor.situacao}}</td>
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -90,7 +94,7 @@
                         <a href="setor-criar"><button class="round-button">Cadastrar Setor</button></a>
                     </div>
                     <div class="col-xs-12 col-sm-4">
-                        <form method="get" action="setor-atualizar">
+                        <form method="get" action="setor-remover">
                             <button type="submit" disabled class="round-button" name="id">Remover Setor</button>
                         </form>
                     </div>
@@ -127,5 +131,6 @@
                 buttons.prop('value', $(this).children().first().text())
             });
         });
+
     </script>
 {% endblock %}
