@@ -1,8 +1,8 @@
-function mostrar_confirma(){
+function mostrar_confirmacao(){
 
-	var r=confirm("Tem certeza que deseja excluir?")
+	var conf=confirm("Tem certeza que deseja excluir?");
 
-	if (r==true){
+	if (conf==true){
 
 		alert("Excluido com sucesso");
 	}
