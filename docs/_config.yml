@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 title: Minimal theme
 description: Minimal is a theme for GitHub Pages.
 show_downloads: true
 google_analytics:
 theme: jekyll-theme-minimal
-=======
-theme: jekyll-theme-merlot
->>>>>>> 3041d4e58a265bc7405e822fd68be6a249a51809
