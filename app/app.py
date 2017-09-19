@@ -15,9 +15,9 @@ app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'jesus'
 app.config['MYSQL_DB'] = 'zelda'
-app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
+app.config['MYSQcadastroFuncionarioL_CURSORCLASS'] = 'DictCursor'
 # init MYSQL
-mysql = MySQL(app) 
+mysql = MySQL(app)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -28,32 +28,32 @@ login_manager.login_view = 'login'
 @app.route('/')
 def index():
     form = LoginForms()
-    return render_template("login.html",form=form)
+    return render_template("cadastroFuncionario.html",form=form)
 
 '''@app.route("/login", methods=['POST'])
 def login():
 	form = Login_form()
 	email = request.form['usuario']
-	
+
 	 # Create cursor
     cur = mysql.connection.cursor()
-    
+
     result = cur.execute("SELECT funcionario_login FROM zelda_funcionario WHERE funcionario_login = 'jailsonpj' SELECT funcionario_login FROM zelda_funcionario WHERE funcionario_login = 'jailsonpj'")
-	
+
 	#dados_usuario = usuarios.query.filter_by(email=email).first()
 	if dados_usuario != None:
 		senha = request.form['senha']
 		gerarSenha = CriptografiaSenha(senha)
 		HashGerada = gerarSenha.gerarHash(dados_usuario.salt)
-		
+
 		if HashGerada == dados_usuario.senha:
 			login_user(dados_usuario)
-		
 
-	
-	
+
+
+
 	return redirect(url_for('index'))
-	
+
 
 
 @app.route('/menu')
@@ -65,7 +65,7 @@ def menu():
 def cadastrar_funcionario():
     form = FuncionarioCadastroForms(request.form)
     if request.method == 'POST' and form.validate():
-        
+
         funcionario_id = form.funcionario_id.data
         funcionario_nome = form.funcionario_nome.data
         funcionario_login =form.funcionario_login.data
@@ -78,8 +78,8 @@ def cadastrar_funcionario():
         funcionario_recebidos = form.funcionario_recebidos.data
         funcionario_telefone = form.funcionario_telefone.data
         funcionario_unidade = form.funcionario_unidade.data
-        
-        
+
+
         # Create cursor
         cur = mysql.connection.cursor()
 
@@ -96,7 +96,7 @@ def cadastrar_funcionario():
 
         return redirect(url_for('login'))
     return render_template('cadastrar_funcionario.html', form=form)
-    
+
 
 #@app.route('/menu/Remover Funcionario')
 #def remover_funcionario():
@@ -104,7 +104,7 @@ def cadastrar_funcionario():
 
 #@app.route('/menu/Editar Funcionario')
 #def editar_funcionario():
-    
+
 #@app.route('/menu/Cadastrar Setor',methods = ['GET', 'POST'])
 #def cadastrar_setor():
 

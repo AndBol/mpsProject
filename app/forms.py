@@ -22,7 +22,7 @@ class CadastraFuncionarioForms(Form):
     confirm = PasswordField('Confirm Password')
     funcionario_email = StringField('Email', [validators.Length(min=6, max=50)])
     funcionario_status = StringField('Status (-1, 0, 1)', [validators.Length(min=1 , max=1)])
-    funcionario_matricula = StringField('Matrícula', [validators.Length(min=6, max=12)])
+    funcionario_matricula = StringField('Matricula', [validators.Length(min=6, max=12)])
     funcionario_ultimo_acesso = StringField('Ultimo acesso', [validators.Length(min=10, max=10)])
     funcionario_enviados = StringField('Enviados', [validators.Length(min=1, max=100)])
     funcionario_recebidos = StringField('Recebidos', [validators.Length(min=1, max=100)])
@@ -34,4 +34,3 @@ class CadastraSetorForms(Form):
         setor_id = StringField('ID',[validators.Length(min=1, max=12)])
         setor_nome = StringField('Name', [validators.Length(min=1, max=50)])
         setor_status = StringField('Satatus (-1, 0, 1)',[validators.Length(min=1 , max=1)])
-
